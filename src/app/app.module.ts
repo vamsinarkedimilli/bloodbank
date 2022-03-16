@@ -8,6 +8,7 @@ import {RouterModule} from "@angular/router";
 import {approutesModule} from "./approutes.module";
 import {BloodgroupsComponent} from "./bloodgroups/bloodgroups.component";
 import {DonationsComponent} from "./donations/donations.component";
+import {FindbloodComponent} from "./findblood/findblood.component";
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import {DonationsComponent} from "./donations/donations.component";
     HeaderComponent,
     DonateComponent,
     BloodgroupsComponent,
-    DonationsComponent
+    DonationsComponent,
+    FindbloodComponent
   ],
     imports: [
         BrowserModule,
