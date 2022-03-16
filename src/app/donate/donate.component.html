@@ -1,91 +1,92 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <form>
-        <div class="row">
-          <div class="col-xs-6">
-            <div class="form-group">
-              <label for="name">Name</label>
-              <input type="text" id="name" class="form-control" name="name">
+<div class="tab">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <form [formGroup]="donateForm" (ngSubmit)="submitDonateForm()">
+          <div class="row">
+            <div class="col-xs-6">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" class="form-control" name="name" formControlName="name">
+              </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-6">
-            <div class="form-group">
-              <label for="age">Age</label>
-              <input type="number" id="age" class="form-control" min="18" name="age">
+          <div class="row">
+            <div class="col-xs-6">
+              <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" id="age" class="form-control" min="18" name="age" formControlName="age">
+              </div>
             </div>
           </div>
-        </div>
-        <label for="dropdownMenu1">Blood Group</label>
-        <div class="dropdown">
-          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            Blood Group&nbsp;&nbsp;<span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            <li><a (click)="updateBloodGroup('A+')" style="cursor: pointer">A+</a></li>
-            <li><a (click)="updateBloodGroup('A-')" style="cursor: pointer">A-</a></li>
-            <li><a (click)="updateBloodGroup('B+')" style="cursor: pointer">B+</a></li>
-            <li><a (click)="updateBloodGroup('B-')" style="cursor: pointer">B-</a></li>
-            <li><a (click)="updateBloodGroup('O+')" style="cursor: pointer">O+</a></li>
-            <li><a (click)="updateBloodGroup('O-')" style="cursor: pointer">O-</a></li>
-            <li><a (click)="updateBloodGroup('AB+')" style="cursor: pointer">AB+</a></li>
-            <li><a (click)="updateBloodGroup('AB-')" style="cursor: pointer">AB-</a></li>
-          </ul>
-          <br><br>
-          <p><strong>Selected Group:</strong> {{ bloodGroup }}</p>
-        </div>
-        <div class="row">
-          <div class="col-xs-6">
-            <div class="form-group">
-              <label for="contact">Contact Number</label>
-              <input type="tel" id="contact" class="form-control" name="contact">
+          <label for="dropdownMenu1">Blood Group</label>
+          <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              Blood Group&nbsp;&nbsp;<span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li><a (click)="updateBloodGroup('A+')" style="cursor: pointer">A+</a></li>
+              <li><a (click)="updateBloodGroup('A-')" style="cursor: pointer">A-</a></li>
+              <li><a (click)="updateBloodGroup('B+')" style="cursor: pointer">B+</a></li>
+              <li><a (click)="updateBloodGroup('B-')" style="cursor: pointer">B-</a></li>
+              <li><a (click)="updateBloodGroup('O+')" style="cursor: pointer">O+</a></li>
+              <li><a (click)="updateBloodGroup('O-')" style="cursor: pointer">O-</a></li>
+              <li><a (click)="updateBloodGroup('AB+')" style="cursor: pointer">AB+</a></li>
+              <li><a (click)="updateBloodGroup('AB-')" style="cursor: pointer">AB-</a></li>
+            </ul>
+            <br><br>
+            <p><strong>Selected Group:</strong> {{ bloodGroup }}</p>
+          </div>
+          <div class="row">
+            <div class="col-xs-6">
+              <div class="form-group">
+                <label for="contact">Contact Number</label>
+                <input type="tel" id="contact" class="form-control" name="contact" formControlName="contactnumber">
+              </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-6">
-            <div class="form-group">
-              <label for="acontact">Alternate Contact Number</label>
-              <input type="tel" id="acontact" class="form-control" name="acontact">
+          <div class="row">
+            <div class="col-xs-6">
+              <div class="form-group">
+                <label for="acontact">Alternate Contact Number</label>
+                <input type="tel" id="acontact" class="form-control" name="acontact" formControlName="alternatecontact">
+              </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-2">
-            <label>State</label>
-            <div class="dropdown">
-              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                {{selectedState}}&nbsp;&nbsp;<span class="caret"></span>
-              </button>
+          <div class="row">
+            <div class="col-xs-2">
+              <label>State</label>
+              <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  {{selectedState}}&nbsp;&nbsp;<span class="caret"></span>
+                </button>
+              </div>
+            </div>
+            <div class="col-xs-2">
+              <label>District</label>
+              <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  {{selectedDistrict}}&nbsp;&nbsp;<span class="caret"></span>
+                </button>
+              </div>
+            </div>
+            <div class="col-xs-2">
+              <label>City</label>
+              <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  {{selectedCity}}&nbsp;&nbsp;<span class="caret"></span>
+                </button>
+              </div>
             </div>
           </div>
-          <div class="col-xs-2">
-            <label>District</label>
-            <div class="dropdown">
-              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                {{selectedDistrict}}&nbsp;&nbsp;<span class="caret"></span>
-              </button>
+          <br>
+          <div class="row">
+            <div class="col-xs-12">
+              <button class="btn btn-primary" type="submit" [disabled]="!donateForm.valid">Submit</button>
             </div>
           </div>
-          <div class="col-xs-2">
-            <label>City</label>
-            <div class="dropdown">
-              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                {{selectedCity}}&nbsp;&nbsp;<span class="caret"></span>
-              </button>
-            </div>
-          </div>
-        </div>
-        <br>
-        <div class="row">
-          <div class="col-xs-12">
-            <button class="btn btn-primary" type="submit">Submit</button>
-          </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </div>
-
 </div>

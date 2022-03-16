@@ -9,6 +9,7 @@ import {approutesModule} from "./approutes.module";
 import {BloodgroupsComponent} from "./bloodgroups/bloodgroups.component";
 import {DonationsComponent} from "./donations/donations.component";
 import {FindbloodComponent} from "./findblood/findblood.component";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {FindbloodComponent} from "./findblood/findblood.component";
     imports: [
         BrowserModule,
         RouterModule,
-        approutesModule
+        approutesModule,
+        ReactiveFormsModule
     ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,61 @@
+<div class="tab">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <form>
+          <label for="dropdownMenu1">Blood Group</label>
+          <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              Blood Group&nbsp;&nbsp;<span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li><a (click)="updateBloodGroup('A+')" style="cursor: pointer">A+</a></li>
+              <li><a (click)="updateBloodGroup('A-')" style="cursor: pointer">A-</a></li>
+              <li><a (click)="updateBloodGroup('B+')" style="cursor: pointer">B+</a></li>
+              <li><a (click)="updateBloodGroup('B-')" style="cursor: pointer">B-</a></li>
+              <li><a (click)="updateBloodGroup('O+')" style="cursor: pointer">O+</a></li>
+              <li><a (click)="updateBloodGroup('O-')" style="cursor: pointer">O-</a></li>
+              <li><a (click)="updateBloodGroup('AB+')" style="cursor: pointer">AB+</a></li>
+              <li><a (click)="updateBloodGroup('AB-')" style="cursor: pointer">AB-</a></li>
+            </ul>
+            <br><br>
+            <p><strong>Selected Group:</strong> {{ bloodGroup }}</p>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-xs-2">
+              <label>State</label>
+              <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  {{selectedState}}&nbsp;&nbsp;<span class="caret"></span>
+                </button>
+              </div>
+            </div>
+            <div class="col-xs-2">
+              <label>District</label>
+              <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  {{selectedDistrict}}&nbsp;&nbsp;<span class="caret"></span>
+                </button>
+              </div>
+            </div>
+            <div class="col-xs-2">
+              <label>City</label>
+              <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                  {{selectedCity}}&nbsp;&nbsp;<span class="caret"></span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-xs-12">
+              <button class="btn btn-primary" type="submit">Check</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
