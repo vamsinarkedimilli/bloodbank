@@ -10,6 +10,8 @@ import {BloodgroupsComponent} from "./bloodgroups/bloodgroups.component";
 import {DonationsComponent} from "./donations/donations.component";
 import {FindbloodComponent} from "./findblood/findblood.component";
 import {ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
+import {ApiService} from "./api.service";
 
 @NgModule({
   declarations: [
@@ -24,9 +26,12 @@ import {ReactiveFormsModule} from "@angular/forms";
         BrowserModule,
         RouterModule,
         approutesModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        HttpClientModule
     ],
-  providers: [],
+  providers: [
+    ApiService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

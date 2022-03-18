@@ -12,3 +12,15 @@
   display: flex;
   align-items: center;
 }
+input#name.form-control.ng-invalid.ng-dirty.ng-touched,
+input#name.form-control.ng-invalid.ng-pristine.ng-touched,
+input#age.form-control.ng-invalid.ng-pristine.ng-touched,
+input#age.form-control.ng-invalid.ng-dirty.ng-touched,
+input#contact.form-control.ng-invalid.ng-pristine.ng-touched,
+input#contact.form-control.ng-invalid.ng-dirty.ng-touched,
+input#acontact.form-control.ng-invalid.ng-pristine.ng-touched,
+input#acontact.form-control.ng-invalid.ng-dirty.ng-touched{
+  border: 1.5px solid red;
+  border-left:5px solid red;
+}
+

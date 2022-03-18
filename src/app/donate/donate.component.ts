@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {ApiService} from "../api.service";
 
 @Component({
   selector: 'app-donate',
@@ -8,12 +9,12 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class DonateComponent implements OnInit {
 
-  constructor() { }
+  constructor( private apiService:ApiService) { }
   donateForm = new FormGroup({
-    name: new FormControl(null,Validators.required),
-    age: new FormControl(null,Validators.required),
-    contactnumber: new FormControl(null,Validators.required),
-    alternatecontact: new FormControl(null,Validators.required)
+    name: new FormControl(null,[Validators.required,Validators.minLength(8)]),
+    age: new FormControl(null,[Validators.required,Validators.min(18)]),
+    contactnumber: new FormControl(null,[Validators.required,Validators.maxLength(10),Validators.minLength(10)]),
+    alternatecontact: new FormControl(null,[Validators.required,Validators.minLength(10),Validators.maxLength(10)])
   })
   bloodGroup!:string;
   selectedState:string = 'Select State';
@@ -28,6 +29,13 @@ export class DonateComponent implements OnInit {
   }
 
   submitDonateForm() {
-    console.log(this.donateForm.value);
+    this.apiService.uploadBloodDonations(this.donateForm.value).subscribe(
+      res=>{
+        console.log(res);
+      },
+      err=>{
+        console.log(err);
+      }
+    )
   }
 }

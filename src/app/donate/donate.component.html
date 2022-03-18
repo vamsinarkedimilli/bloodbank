@@ -8,6 +8,14 @@
               <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" id="name" class="form-control" name="name" formControlName="name">
+                <div class="help-block" *ngIf="donateForm.controls.name.touched" style="text-align: center">
+                  <div *ngIf="donateForm.controls.name.errors?.['required']" style="color: red">
+                    *Name is required
+                  </div>
+                  <div *ngIf="donateForm.controls.name.errors?.['minlength']" style="color: red">
+                    *Minimum length of the name should be 8
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -16,6 +24,14 @@
               <div class="form-group">
                 <label for="age">Age</label>
                 <input type="number" id="age" class="form-control" min="18" name="age" formControlName="age">
+                <div class="help-block" *ngIf="donateForm.controls.age.touched" style="text-align: center">
+                  <div *ngIf="donateForm.controls.age.errors?.['required']" style="color: red">
+                    *Age is required
+                  </div>
+                  <div *ngIf="donateForm.controls.age.errors?.['min']" style="color: red">
+                    *Minimum age should be 18
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -42,6 +58,14 @@
               <div class="form-group">
                 <label for="contact">Contact Number</label>
                 <input type="tel" id="contact" class="form-control" name="contact" formControlName="contactnumber">
+                <div class="help-block" *ngIf="donateForm.controls.contactnumber.touched" style="text-align: center">
+                  <div *ngIf="donateForm.controls.contactnumber.errors?.['required']" style="color: red">
+                    *Contact number is required
+                  </div>
+                  <div *ngIf="donateForm.controls.contactnumber.errors?.['minlength'] || donateForm.controls.contactnumber.errors?.['maxlength']" style="color: red">
+                    *Length of the contact number should be 10
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -50,6 +74,14 @@
               <div class="form-group">
                 <label for="acontact">Alternate Contact Number</label>
                 <input type="tel" id="acontact" class="form-control" name="acontact" formControlName="alternatecontact">
+                <div class="help-block" *ngIf="donateForm.controls.alternatecontact.touched" style="text-align: center">
+                  <div *ngIf="donateForm.controls.alternatecontact.errors?.['required']" style="color: red">
+                    Alternate Contact number is required
+                  </div>
+                  <div *ngIf="donateForm.controls.alternatecontact.errors?.['minlength'] || donateForm.controls.alternatecontact.errors?.['maxlength']" style="color: red">
+                    Length of the contact number should be 10
+                  </div>
+                </div>
               </div>
             </div>
           </div>
