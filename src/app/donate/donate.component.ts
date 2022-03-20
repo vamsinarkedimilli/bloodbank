@@ -13,25 +13,21 @@ export class DonateComponent implements OnInit {
   donateForm = new FormGroup({
     name: new FormControl(null,[Validators.required,Validators.minLength(8)]),
     age: new FormControl(null,[Validators.required,Validators.min(18)]),
+    bloodgroup: new FormControl(null,Validators.required),
     contactnumber: new FormControl(null,[Validators.required,Validators.maxLength(10),Validators.minLength(10)]),
-    alternatecontact: new FormControl(null,[Validators.required,Validators.minLength(10),Validators.maxLength(10)])
+    alternatecontact: new FormControl(null,[Validators.required,Validators.minLength(10),Validators.maxLength(10)]),
+    state: new FormControl(null,Validators.required),
+    district : new FormControl(null,Validators.required),
+    city: new FormControl(null,Validators.required)
   })
-  bloodGroup!:string;
-  selectedState:string = 'Select State';
-  selectedDistrict:string='Select District';
-  selectedCity:string='Select City'
-  location!:string;
+  bloodGroups = ['A+','A-','B+','B-','O+','O-','AB+','AB-']
   ngOnInit(): void {
   }
-
-  updateBloodGroup(bloodGroup:string) {
-    this.bloodGroup=bloodGroup;
-  }
-
   submitDonateForm() {
     this.apiService.uploadBloodDonations(this.donateForm.value).subscribe(
       res=>{
-        console.log(res);
+        window.alert("Submitted Successfully");
+        this.donateForm.reset();
       },
       err=>{
         console.log(err);

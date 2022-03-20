@@ -2,60 +2,88 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12">
-        <form>
-          <label for="dropdownMenu1">Blood Group</label>
-          <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              Blood Group&nbsp;&nbsp;<span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-              <li><a (click)="updateBloodGroup('A+')" style="cursor: pointer">A+</a></li>
-              <li><a (click)="updateBloodGroup('A-')" style="cursor: pointer">A-</a></li>
-              <li><a (click)="updateBloodGroup('B+')" style="cursor: pointer">B+</a></li>
-              <li><a (click)="updateBloodGroup('B-')" style="cursor: pointer">B-</a></li>
-              <li><a (click)="updateBloodGroup('O+')" style="cursor: pointer">O+</a></li>
-              <li><a (click)="updateBloodGroup('O-')" style="cursor: pointer">O-</a></li>
-              <li><a (click)="updateBloodGroup('AB+')" style="cursor: pointer">AB+</a></li>
-              <li><a (click)="updateBloodGroup('AB-')" style="cursor: pointer">AB-</a></li>
-            </ul>
-            <br><br>
-            <p><strong>Selected Group:</strong> {{ bloodGroup }}</p>
+        <form [formGroup]="findBloodForm" (ngSubmit)="checkAvailability()">
+          <div class="row">
+            <div class="col-xs-6">
+              <div class="form-group">
+                <label for="bloodgroup">Blood Group</label>
+                <input class="form-control" type="text" id="bloodgroup" name="bloodgroup" formControlName="bloodgroup">
+                <div class="help-block" *ngIf="findBloodForm.controls.bloodgroup.touched" style="text-align: center">
+                  <div *ngIf="findBloodForm.controls.bloodgroup.errors?.['required']" style="color: red">
+                    Bloodgroup is required
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <br>
           <div class="row">
             <div class="col-xs-2">
-              <label>State</label>
-              <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                  {{selectedState}}&nbsp;&nbsp;<span class="caret"></span>
-                </button>
+              <div class="form-group">
+                <label for="state">State</label>
+                <input type="tel" id="state" class="form-control" name="state" formControlName="state">
+                <div class="help-block" *ngIf="findBloodForm.controls.state.touched" style="text-align: center">
+                  <div *ngIf="findBloodForm.controls.state.errors?.['required']" style="color: red">
+                    State is required
+                  </div>
+                </div>
               </div>
             </div>
             <div class="col-xs-2">
-              <label>District</label>
-              <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                  {{selectedDistrict}}&nbsp;&nbsp;<span class="caret"></span>
-                </button>
+              <div class="form-group">
+                <label for="district">District</label>
+                <input type="tel" id="district" class="form-control" name="district" formControlName="district">
+                <div class="help-block" *ngIf="findBloodForm.controls.district.touched" style="text-align: center">
+                  <div *ngIf="findBloodForm.controls.district.errors?.['required']" style="color: red">
+                    District is required
+                  </div>
+                </div>
               </div>
             </div>
             <div class="col-xs-2">
-              <label>City</label>
-              <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                  {{selectedCity}}&nbsp;&nbsp;<span class="caret"></span>
-                </button>
+              <div class="form-group">
+                <label for="district">City</label>
+                <input type="tel" id="city" class="form-control" name="city" formControlName="city">
+                <div class="help-block" *ngIf="findBloodForm.controls.city.touched" style="text-align: center">
+                  <div *ngIf="findBloodForm.controls.city.errors?.['required']" style="color: red">
+                    City is required
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <br>
           <div class="row">
             <div class="col-xs-12">
-              <button class="btn btn-primary" type="submit">Check</button>
+              <button class="btn btn-primary" type="submit" [disabled]="!findBloodForm.valid">Check Availability</button>
             </div>
           </div>
         </form>
       </div>
     </div>
+  </div>
+  <br><br>
+  <div *ngIf="returnedData.length>0">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Age</th>
+          <th scope="col">Blood Group</th>
+          <th scope="col">Contact Number</th>
+          <th scope="col">Alternate Contact Number</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let person of returnedData">
+          <td>{{person.name}}</td>
+          <td>{{person.age}}</td>
+          <td>{{person.bloodgroup}}</td>
+          <td>{{person.contactnumber}}</td>
+          <td>{{person.alternatecontactnumber}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="returnedData.length===0 && flag===1">
+    <h3  align="center">No Results Found</h3>
   </div>
 </div>

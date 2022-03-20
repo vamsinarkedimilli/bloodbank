@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {ApiService} from "../api.service";
+import {Person} from "../../models/dataModel";
 
 @Component({
   selector: 'app-findblood',
@@ -6,18 +9,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./findblood.component.css']
 })
 export class FindbloodComponent implements OnInit {
-  bloodGroup: string = 'No Blood group selected';
-  selectedState: any = 'Select State';
-  selectedDistrict: any = 'Select District';
-  selectedCity: any = 'Select City';
-
-
-  constructor() { }
-
+  constructor(private apiService:ApiService) { }
+  findBloodForm = new FormGroup({
+    bloodgroup: new FormControl(null,Validators.required),
+    state: new FormControl(null,Validators.required),
+    district: new FormControl(null,Validators.required),
+    city: new FormControl(null,Validators.required)
+  })
+  flag=0;
+  returnedData:Person[] =[];
   ngOnInit(): void {
   }
-  updateBloodGroup(bloodgroup:string){
-    this.bloodGroup=bloodgroup;
+  checkAvailability() {
+    this.apiService.checkAvailability(this.findBloodForm.value).subscribe(
+      res=>{
+        if(res==="Doesn't Exists"){
+          this.flag=1;
+          return
+        }
+        res=JSON.parse(res);
+        this.returnedData = res;
+      },
+      err=>{
+        console.log(err);
+      }
+    )
   }
-
 }

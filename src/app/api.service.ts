@@ -11,7 +11,10 @@ export class ApiService {
   constructor(private http:HttpClient) {}
 
   uploadBloodDonations(bloodDonationData:FormGroup) : Observable<any>{
-    console.log(bloodDonationData);
     return this.http.post('http://localhost/bloodbank/backend/blooddonations.php',bloodDonationData,{responseType:'text'});
+  }
+
+  checkAvailability(checkDetails:FormGroup):Observable<any>{
+    return this.http.post('http://localhost/bloodbank/backend/checkavailability.php',checkDetails,{responseType:'text'});
   }
 }

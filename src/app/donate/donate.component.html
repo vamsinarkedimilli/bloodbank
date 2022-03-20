@@ -35,23 +35,18 @@
               </div>
             </div>
           </div>
-          <label for="dropdownMenu1">Blood Group</label>
-          <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              Blood Group&nbsp;&nbsp;<span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-              <li><a (click)="updateBloodGroup('A+')" style="cursor: pointer">A+</a></li>
-              <li><a (click)="updateBloodGroup('A-')" style="cursor: pointer">A-</a></li>
-              <li><a (click)="updateBloodGroup('B+')" style="cursor: pointer">B+</a></li>
-              <li><a (click)="updateBloodGroup('B-')" style="cursor: pointer">B-</a></li>
-              <li><a (click)="updateBloodGroup('O+')" style="cursor: pointer">O+</a></li>
-              <li><a (click)="updateBloodGroup('O-')" style="cursor: pointer">O-</a></li>
-              <li><a (click)="updateBloodGroup('AB+')" style="cursor: pointer">AB+</a></li>
-              <li><a (click)="updateBloodGroup('AB-')" style="cursor: pointer">AB-</a></li>
-            </ul>
-            <br><br>
-            <p><strong>Selected Group:</strong> {{ bloodGroup }}</p>
+          <div class="row">
+            <div class="col-xs-6">
+              <div class="form-group">
+                <label for="bloodgroup">Blood Group</label>
+                <input class="form-control" type="text" id="bloodgroup" name="bloodgroup" formControlName="bloodgroup">
+                <div class="help-block" *ngIf="donateForm.controls.bloodgroup.touched" style="text-align: center">
+                  <div *ngIf="donateForm.controls.bloodgroup.errors?.['required']" style="color: red">
+                    *Bloodgroup is required
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="row">
             <div class="col-xs-6">
@@ -87,27 +82,36 @@
           </div>
           <div class="row">
             <div class="col-xs-2">
-              <label>State</label>
-              <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                  {{selectedState}}&nbsp;&nbsp;<span class="caret"></span>
-                </button>
+              <div class="form-group">
+                <label for="state">State</label>
+                <input type="tel" id="state" class="form-control" name="state" formControlName="state">
+                <div class="help-block" *ngIf="donateForm.controls.state.touched" style="text-align: center">
+                  <div *ngIf="donateForm.controls.state.errors?.['required']" style="color: red">
+                    State is required
+                  </div>
+                </div>
               </div>
             </div>
             <div class="col-xs-2">
-              <label>District</label>
-              <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                  {{selectedDistrict}}&nbsp;&nbsp;<span class="caret"></span>
-                </button>
+              <div class="form-group">
+                <label for="district">District</label>
+                <input type="tel" id="district" class="form-control" name="district" formControlName="district">
+                <div class="help-block" *ngIf="donateForm.controls.district.touched" style="text-align: center">
+                  <div *ngIf="donateForm.controls.district.errors?.['required']" style="color: red">
+                    District is required
+                  </div>
+                </div>
               </div>
             </div>
             <div class="col-xs-2">
-              <label>City</label>
-              <div class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                  {{selectedCity}}&nbsp;&nbsp;<span class="caret"></span>
-                </button>
+              <div class="form-group">
+                <label for="district">City</label>
+                <input type="tel" id="city" class="form-control" name="city" formControlName="city">
+                <div class="help-block" *ngIf="donateForm.controls.city.touched" style="text-align: center">
+                  <div *ngIf="donateForm.controls.city.errors?.['required']" style="color: red">
+                    City is required
+                  </div>
+                </div>
               </div>
             </div>
           </div>
